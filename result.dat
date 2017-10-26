@@ -1,0 +1,9 @@
+@0001000
+2021000a//MAIN:   addi r1, r1, 0xA;
+00010020//        add  r0, r0, r1;
+2021ffff//        addi r1, r1, -1;
+1401fffd//        bne  r1, r0, LOOP;
+00602022//        sub  r4, r3, r0;
+10600001//        beq  r0, r3 END;
+08001000//        jmp  MAIN;
+0060002c//END:    mul r0, r3, r0;
