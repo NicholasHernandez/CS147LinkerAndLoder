@@ -181,12 +181,16 @@ def J_type(opcode, tokenList, lineNum):
     instr += addr
     return instr
 
+def J_type_stack(opcode, tokenList, lineNum):
+    instr = opcode  # opcode
+    instr= instr << addr_width
+    return instr
 
 mnemonics = {'add': (R_type, 32), 'sub': (R_type, 34), 'mul':(R_type, 44), 'and': (R_type, 36), 'or': (R_type,37),
             'nor': (R_type, 39), 'slt': (R_type, 42), 'sll': (R_type_shift, 1), 'srl': (R_type_shift, 2), 'nor': (R_type, 2),
             'jr': (R_type, 8),'addi': (I_type, 8), 'muli': (I_type, 29), 'andi': (I_type, 12), 'ori': (I_type, 13),
             'lui': (I_type_lui, 15),'slti': (I_type, 10), 'beq': (I_type_branch, 4), 'bne': (I_type_branch, 5), 'lw': (I_type, 35),
-            'sw': (I_type, 43), 'jmp': (J_type, 2), 'jal': (J_type, 3), 'push': (J_type, 27), 'pop': (J_type, 28)}
+            'sw': (I_type, 43), 'jmp': (J_type, 2), 'jal': (J_type, 3), 'push': (J_type_stack, 27), 'pop': (J_type_stack, 28)}
 
 def Compile():
     filepath =  sys.argv[1]
